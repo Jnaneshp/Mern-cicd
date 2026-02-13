@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Images') {
+            steps {
+                bat 'docker-compose build'
+            }
+        }
+
+        stage('Run Containers') {
+            steps {
+                bat 'docker-compose up -d'
+            }
+        }
+
+        stage('Verify Running Containers') {
+            steps {
+                bat 'docker ps'
+            }
+        }
+
+        stage('Stop Containers') {
+            steps {
+                bat 'docker-compose down'
+            }
+        }
+    }
+}
