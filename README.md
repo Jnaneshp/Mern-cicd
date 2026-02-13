@@ -1,10 +1,10 @@
-# A simple MERN stack application 
+# A simple MERN stack application
 
 ### Create a network for the docker containers
 
 `docker network create demo`
 
-### Build the client 
+### Build the client
 
 ```sh
 cd mern/frontend
@@ -38,3 +38,4 @@ docker build -t mern-backend .
 
 `docker compose up -d`
 
+made some chnages to trigger build
