@@ -8,27 +8,16 @@ pipeline {
             }
         }
 
-        stage('Build Docker Images') {
+        stage('Deploy Application') {
             steps {
-                bat 'docker-compose build'
-            }
-        }
-
-        stage('Run Containers') {
-            steps {
-                bat 'docker-compose up -d'
+                bat 'docker-compose down'
+                bat 'docker-compose up -d --build'
             }
         }
 
         stage('Verify Running Containers') {
             steps {
                 bat 'docker ps'
-            }
-        }
-
-        stage('Stop Containers') {
-            steps {
-                bat 'docker-compose down'
             }
         }
     }
